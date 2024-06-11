@@ -1,0 +1,52 @@
+﻿@using MedicalClinic.Features.Calendar
+@model CalendarIndexViewModel
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+<div>
+    @foreach (var appointment in Model.Appointments)
+    {
+        <div>
+            <div>@appointment.Date</div>
+            @if (appointment.Doctor.HasValue)
+            {
+                <div>
+                    <span>Doctor:</span>
+                    <span>@appointment.Doctor.Value.FirstName</span>
+                    <span>@appointment.Doctor.Value.LastName</span>
+                </div>
+            }
+
+            @if (appointment.Patient.HasValue)
+            {
+                <div>
+                    <span>Patient:</span>
+                    <span>@appointment.Patient.Value.FirstName</span>
+                    <span>@appointment.Patient.Value.LastName</span>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<button onclick="createAppointment('test', 'b0f7f4fb-c9bb-4897-abe7-504f447f742e', '2024-06-11')">
+    Add
+</button>
+
+<script>
+    async function createAppointment(reason, doctorId, date) {
+        await fetch('/Calendar/CreateAppointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                reason: reason,
+                doctorId: doctorId,
+                date: date
+            })
+        });
+    }
+</script>

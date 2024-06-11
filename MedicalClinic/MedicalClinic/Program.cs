@@ -1,7 +1,17 @@
+using MedicalClinic.Appointments;
+using MedicalClinic.Calendar;
+using MedicalClinic.Infrastructure;
+using MedicalClinic.Users;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAppointmentsModule();
+builder.Services.AddUsersModule();
+builder.Services.AddCalendarModule();
+builder.Services.AddInfrastructureModule(builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new ArgumentNullException());
 
 var app = builder.Build();
 
