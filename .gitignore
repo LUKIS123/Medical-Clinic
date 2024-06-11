@@ -1,2 +1,4 @@
 ﻿MedicalClinic/.vs
 MedicalClinic/MedicalClinic/obj
+MedicalClinic/*/bin/*
+MedicalClinic/*/obj/*

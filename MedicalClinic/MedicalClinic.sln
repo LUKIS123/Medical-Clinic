@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic", "MedicalClinic\MedicalClinic.csproj", "{575C3361-EBCC-4AFD-ACBB-5427F1FA18C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalClinic", "MedicalClinic\MedicalClinic.csproj", "{575C3361-EBCC-4AFD-ACBB-5427F1FA18C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{8AC79552-215D-4C72-9751-EBA2A811F8D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.Appointments", "MedicalClinic.Appointments\MedicalClinic.Appointments.csproj", "{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.SharedKernel", "MedicalClinic.SharedKernel\MedicalClinic.SharedKernel.csproj", "{202A87B2-E896-4542-8FD6-FF955961BF0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.Infrastructure", "MedicalClinic.Infrastructure\MedicalClinic.Infrastructure.csproj", "{6D4294DB-3FCC-48ED-BC34-778C08F0EFDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.Users", "MedicalClinic.Users\MedicalClinic.Users.csproj", "{67DA7088-785F-4674-A9A4-98476756D625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.Calendar", "MedicalClinic.Calendar\MedicalClinic.Calendar.csproj", "{3D814C6F-4F32-4E27-A92A-B3D674C27FB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +27,34 @@ Global
 		{575C3361-EBCC-4AFD-ACBB-5427F1FA18C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{575C3361-EBCC-4AFD-ACBB-5427F1FA18C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{575C3361-EBCC-4AFD-ACBB-5427F1FA18C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202A87B2-E896-4542-8FD6-FF955961BF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202A87B2-E896-4542-8FD6-FF955961BF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202A87B2-E896-4542-8FD6-FF955961BF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202A87B2-E896-4542-8FD6-FF955961BF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D4294DB-3FCC-48ED-BC34-778C08F0EFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4294DB-3FCC-48ED-BC34-778C08F0EFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4294DB-3FCC-48ED-BC34-778C08F0EFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4294DB-3FCC-48ED-BC34-778C08F0EFDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DA7088-785F-4674-A9A4-98476756D625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DA7088-785F-4674-A9A4-98476756D625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DA7088-785F-4674-A9A4-98476756D625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DA7088-785F-4674-A9A4-98476756D625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D814C6F-4F32-4E27-A92A-B3D674C27FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D814C6F-4F32-4E27-A92A-B3D674C27FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D814C6F-4F32-4E27-A92A-B3D674C27FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D814C6F-4F32-4E27-A92A-B3D674C27FB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB62D9AD-2C4E-4AC7-BC10-7F8BC3D07B69} = {8AC79552-215D-4C72-9751-EBA2A811F8D0}
+		{67DA7088-785F-4674-A9A4-98476756D625} = {8AC79552-215D-4C72-9751-EBA2A811F8D0}
+		{3D814C6F-4F32-4E27-A92A-B3D674C27FB7} = {8AC79552-215D-4C72-9751-EBA2A811F8D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8F18BD7-C52E-4170-925A-DBEC56E10364}
