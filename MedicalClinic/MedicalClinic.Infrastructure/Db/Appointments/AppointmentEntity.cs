@@ -6,6 +6,6 @@ namespace MedicalClinic.Infrastructure.Db.Appointments;
 internal record AppointmentEntity(
     Guid Id,
     DateTime Date,
-    string Reason,
+    string? Reason,
     Guid DoctorId,
     Guid PatientId);

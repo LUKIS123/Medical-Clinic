@@ -1,6 +1,6 @@
 ﻿namespace MedicalClinic.Features.Calendar;
 
 public record CreateAppointmentRequest(
-    string Reason,
+    string? Reason,
     Guid DoctorId,
     DateTime Date);
