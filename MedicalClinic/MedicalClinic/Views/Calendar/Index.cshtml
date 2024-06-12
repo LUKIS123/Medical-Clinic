@@ -8,25 +8,42 @@
 <div>
     @foreach (var appointment in Model.Appointments)
     {
-        <div>
-            <div>@appointment.Date</div>
-            @if (appointment.Doctor.HasValue)
-            {
-                <div>
-                    <span>Doctor:</span>
-                    <span>@appointment.Doctor.Value.FirstName</span>
-                    <span>@appointment.Doctor.Value.LastName</span>
+        <div class="container mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Appointment</h5>
                 </div>
-            }
-
-            @if (appointment.Patient.HasValue)
-            {
-                <div>
-                    <span>Patient:</span>
-                    <span>@appointment.Patient.Value.FirstName</span>
-                    <span>@appointment.Patient.Value.LastName</span>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Date: @appointment.Date.ToString("MM.dd.yyyy")</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Time: @appointment.Date.TimeOfDay.ToString("hh\\:mm")</h6>
+                    <p class="card-text">
+                        @if (appointment.Doctor.HasValue)
+                        {
+                            <span>
+                                <span>Doctor:</span>
+                                <span>@appointment.Doctor.Value.FirstName</span>
+                                <span>@appointment.Doctor.Value.LastName</span>
+                            </span>
+                        }
+                        <br />
+                        @if (appointment.Patient.HasValue)
+                        {
+                            <span>
+                                <span>Patient:</span>
+                                <span>@appointment.Patient.Value.FirstName</span>
+                                <span>@appointment.Patient.Value.LastName</span>
+                            </span>
+                        }
+                    </p>
+                    <p>
+                        Details: <br/>
+                        @appointment.Reason
+                    </p>
                 </div>
-            }
+                <div class="card-footer bg-light">
+                    <a href="#" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
         </div>
     }
 </div>
