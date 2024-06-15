@@ -5,6 +5,10 @@
     ViewBag.Title = "Calendar";
 }
 
+<button class="btn btn-outline-primary my-2" onclick="location.href='@Url.Action("CreateAppointment", "Calendar")'">
+    Create Appointment
+</button>
+
 <div>
     @foreach (var appointment in Model.Appointments)
     {
@@ -47,7 +51,3 @@
         </div>
     }
 </div>
-
-<button class="btn btn-outline-primary my-2" onclick="location.href='@Url.Action("CreateAppointment", "Calendar")'">
-    Create Appointment
-</button>
