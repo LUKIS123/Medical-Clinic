@@ -1,4 +1,6 @@
-﻿using MedicalClinic.Users.Features.GetUsers;
+﻿using MedicalClinic.Users.Features.GetAllDoctors;
+using MedicalClinic.Users.Features.GetAllDoctors.Contract;
+using MedicalClinic.Users.Features.GetUsers;
 using MedicalClinic.Users.Features.GetUsers.Contract;
 using MedicalClinic.Users.Features.IsUserADoctor;
 using MedicalClinic.Users.Features.IsUserADoctor.Contract;
@@ -12,5 +14,6 @@ public static class UsersModule
     {
         services.AddTransient<IGetUsersHandler, GetUsersHandler>();
         services.AddTransient<IIsUserADoctorHandler, IsUserADoctorHandler>();
+        services.AddTransient<IGetAllDoctorsHandler, GetAllDoctorsHandler>();
     }
 }

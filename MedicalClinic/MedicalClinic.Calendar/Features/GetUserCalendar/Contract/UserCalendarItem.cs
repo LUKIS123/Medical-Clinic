@@ -5,6 +5,6 @@ namespace MedicalClinic.Calendar.Features.GetUserCalendar.Contract;
 public readonly record struct UserCalendarItem(
     Guid Id,
     DateTime Date,
-    string Reason,
+    string? Reason,
     User? Doctor,
     User? Patient);

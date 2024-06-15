@@ -25,7 +25,7 @@
                                 <span>@appointment.Doctor.Value.LastName</span>
                             </span>
                         }
-                        <br />
+                        <br/>
                         @if (appointment.Patient.HasValue)
                         {
                             <span>
@@ -48,22 +48,6 @@
     }
 </div>
 
-<button onclick="createAppointment('test', 'b0f7f4fb-c9bb-4897-abe7-504f447f742e', '2024-06-11')">
-    Add
+<button class="btn btn-outline-primary my-2" onclick="location.href='@Url.Action("CreateAppointment", "Calendar")'">
+    Create Appointment
 </button>
-
-<script>
-    async function createAppointment(reason, doctorId, date) {
-        await fetch('/Calendar/CreateAppointment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                reason: reason,
-                doctorId: doctorId,
-                date: date
-            })
-        });
-    }
-</script>

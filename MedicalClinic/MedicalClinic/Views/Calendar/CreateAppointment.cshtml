@@ -1,0 +1,126 @@
+﻿@using MedicalClinic.Features.Calendar﻿
+@model CreateAppointmentRequest
+
+@{
+    ViewData["Title"] = "Appointment";
+}
+
+
+<form>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Reason)
+        @Html.TextAreaFor(m => m.Reason, new { @class = "form-control", rows = 3, id = "reason" })
+        @Html.ValidationMessageFor(m => m.Reason, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("DoctorId", "Doctor", new { @class = "control-label" })
+        <br />
+        <select class="form-control inputstl" id="doctors"></select>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Date", "Date", new { @class = "control-label" })
+        <input type="text" class="form-control" id="datepicker" />
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Time", "Time", new { @class = "control-label" })
+        <input type="text" class="form-control" id="timepicker" />
+    </div>
+
+    <button class="btn btn-outline-primary my-2" onclick="createAppointment()">
+        Add
+    </button>
+</form>
+
+
+<script defer>
+    var dateStart = new Date();
+    $('#datepicker').datepicker({
+        startDate: dateStart,
+        defaultDate: dateStart,
+        format: 'dd-mm-yyyy',
+        orientation: 'bottom auto',
+        onSelect: function (dateText, inst) {
+            $(this).datepicker('hide');
+        }
+    });
+</script>
+
+<script defer>
+    $('#timepicker').timepicker({
+        timeFormat: 'H:i',
+        minTime: '8',
+        startTime: '8:00',
+        maxTime: '16:00',
+        step: 30,
+        forceRoundTime: true,
+        use24hours: true
+    });
+</script>
+
+<script>
+    async function createAppointment() {
+        event.preventDefault();
+
+        const [day, month, year] = document.getElementById("datepicker").value.split('-');
+        const [hours, minutes] = document.getElementById("timepicker").value.split(':');
+
+        const isoDateTime = `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;
+
+        const doctorSelect = document.getElementById("doctors");
+        if (!doctorSelect.value) {
+            alert("Please select a doctor.");
+            return;
+        }
+        const doctorId = doctorSelect.options[doctorSelect.selectedIndex].value;
+
+        try {
+            const response = await fetch('/Calendar/CreateAppointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    reason: document.getElementById("reason").value,
+                    doctorId: doctorId,
+                    date: isoDateTime
+                })
+            });
+
+            if (response.ok) {
+                window.location.href = '/Calendar/Index';
+            } else {
+                alert("An error occurred while creating the appointment"); ")
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+</script>
+
+<script>
+    async function getAvailableDoctors() {
+        try {
+            const response = await fetch('/Calendar/GetAvailableDoctors', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            const doctors = await response.json();
+            const select = document.getElementById('doctors');
+            select.innerHTML = doctors
+                .map(d => `<option value=${d.id}>${d.name}</option>`)
+                .join();
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    $(document).ready(function () {
+        getAvailableDoctors();
+    });
+</script>
