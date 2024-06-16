@@ -1,6 +1,5 @@
-﻿using MedicalClinic.Appointments.Features.CreateAppointment.Contract;
-using MedicalClinic.Appointments.Features.GetAppointments.Contract;
-using MedicalClinic.Calendar.Features.CreatePatientCalendarItem.Contract;
+﻿using MedicalClinic.Calendar.Features.CreatePatientCalendarItem.Contract;
+using MedicalClinic.Calendar.Features.GetAvailableDoctors.Contract;
 using MedicalClinic.Calendar.Features.GetUserCalendar.Contract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,13 +9,16 @@ public class CalendarController : Controller
 {
     private readonly ICreatePatientCalendarItemHandler _createPatientCalendarItemHandler;
     private readonly IGetUserCalendarHandler _getAppointmentsHandler;
+    private readonly IGetAvailableDoctorsHandler _getAvailableDoctorsHandler;
 
     public CalendarController(
         ICreatePatientCalendarItemHandler createAppointmentHandler,
-        IGetUserCalendarHandler createPatientCalendarItemHandler)
+        IGetUserCalendarHandler createPatientCalendarItemHandler,
+        IGetAvailableDoctorsHandler getAvailableDoctorsHandler)
     {
         _createPatientCalendarItemHandler = createAppointmentHandler;
         _getAppointmentsHandler = createPatientCalendarItemHandler;
+        _getAvailableDoctorsHandler = getAvailableDoctorsHandler;
     }
 
     public async Task<IActionResult> Index()
@@ -24,6 +26,11 @@ public class CalendarController : Controller
         return View(
             new CalendarIndexViewModel(
                 await _getAppointmentsHandler.Handle()));
+    }
+
+    public IActionResult CreateAppointment()
+    {
+        return View();
     }
 
     [HttpPost]
@@ -35,5 +42,12 @@ public class CalendarController : Controller
             request.Date));
 
         return Ok();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAvailableDoctors()
+    {
+        var availableDoctors = await _getAvailableDoctorsHandler.Handle();
+        return Ok(availableDoctors);
     }
 }

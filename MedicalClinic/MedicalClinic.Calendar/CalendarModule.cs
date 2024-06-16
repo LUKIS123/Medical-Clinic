@@ -1,5 +1,7 @@
 ﻿using MedicalClinic.Calendar.Features.CreatePatientCalendarItem;
 using MedicalClinic.Calendar.Features.CreatePatientCalendarItem.Contract;
+using MedicalClinic.Calendar.Features.GetAvailableDoctors;
+using MedicalClinic.Calendar.Features.GetAvailableDoctors.Contract;
 using MedicalClinic.Calendar.Features.GetUserCalendar;
 using MedicalClinic.Calendar.Features.GetUserCalendar.Contract;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,5 +14,6 @@ public static class CalendarModule
     {
         services.AddTransient<IGetUserCalendarHandler, GetUserCalendarHandler>();
         services.AddTransient<ICreatePatientCalendarItemHandler, CreatePatientCalendarItemHandler>();
+        services.AddTransient<IGetAvailableDoctorsHandler, GetAvailableDoctorsHandler>();
     }
 }

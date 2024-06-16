@@ -1,5 +1,4 @@
-﻿using MedicalClinic.Appointments.Features.Shared;
-using MedicalClinic.Calendar.Features.GetUserCalendar.Contract;
+﻿using MedicalClinic.Calendar.Features.GetUserCalendar.Contract;
 
 namespace MedicalClinic.Features.Calendar;
 
